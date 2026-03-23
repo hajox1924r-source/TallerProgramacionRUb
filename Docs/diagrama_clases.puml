@@ -1,0 +1,57 @@
+@startuml
+' =========================
+' CLASES ABSTRACTAS
+' =========================
+
+abstract class Persona {
+    -id: int
+    -nombre: String 
+    -apellido: String
+    -fechaNacimiento: LocalDate
+    -email: String
+    +calcularEdad(): int
+    +obtenerTipo(): String
+}
+
+abstract class Empleado {
+    -legajo: String
+    -fechaContratacion: LocalDate
+    -salarioBase: double
+    -activo: boolean
+    +calcularSalario(): double
+    +antiguedad(): int
+}
+
+' =========================
+' PERSONAS
+' =========================
+
+class Paciente {
+    -historiaClinicaID: String
+    -grupoSanguineo: String
+    -alergias: List<String>
+    +agregarAlergia()
+    +obtenerHistorial()
+}
+
+class medico {
+    -numeroLicencia: String
+    -especialidad: String
+    +atenderPaciente()
+    +calcularSalario()
+}
+
+class Cirujano {
+    -cirugiasRealizadas: int
+    -disponibilidadEmergencias: boolean
+    +realizarCirugia()
+    +calcularBono()
+}
+
+class Enfermero {
+    -turno: Turno
+    -areaAsignada: String
+    +asistirCirujia()
+    +calcularSalario()
+}
+
