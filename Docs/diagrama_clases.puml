@@ -1,4 +1,4 @@
-@startuml
+@startuml de_clases 
 ' =========================
 ' CLASES ABSTRACTAS
 ' =========================
@@ -34,7 +34,7 @@ class Paciente {
     +obtenerHistorial()
 }
 
-class medico {
+class Medico {
     -numeroLicencia: String
     -especialidad: String
     +atenderPaciente()
@@ -55,3 +55,79 @@ class Enfermero {
     +calcularSalario()
 }
 
+' =========================
+' HOSPITAL
+' =========================
+
+class Hospital {
+    -nombre: String 
+    -direccion: String
+    -empleados: List<Empleado>
+    -pacientes: List<Paciente>
+    +contratarEmpleado()
+    +agendarCita()
+    +calcularNominaTotal()
+}
+
+class citaMedica {
+    -id: int
+    -fechaHora: LocalDateTime
+    -motivo: String
+    -estado: EstadoCita
+    +calcularCosto()
+    +compeletar()
+    +cancelar()
+}
+
+class Diagnostico {
+    -id: int
+    -descripcion: String
+    -fecha: LocalDate
+    -receta: LocalDate
+}
+
+class especialidad {
+    -codigo: String
+    -nombre: String
+    -costoConsulta: double
+}
+
+' =========================
+' ENUMS
+' =========================
+
+enum EstadoCita {
+    PENDIENTE
+    CONFIRMADA
+    EN_ATENCION
+    COMPLETADA
+    CANCELADA
+}
+
+enum Turno {
+    MAÑANA
+    TARDE
+    NOCHE
+}
+
+' =========================
+' RELACIONES
+' =========================
+
+Persona <|-- Paciente
+Persona <|-- Paciente
+Empleado <|-- Medico
+Medico <|-- Cirujano
+Empleado <|-- Enfermero
+
+Hospital "1" *-- "*" Empleado
+Hospital "1" *-- "*" Paciente
+Hospital "1" *-- "*" citaMedica
+
+citaMedica --> Paciente 
+citaMedica --> Medico
+citaMedica --> Diagnostico
+
+Medico --> especialidad
+
+@enduml
