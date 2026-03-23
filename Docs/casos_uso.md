@@ -48,3 +48,30 @@
 2. Cambia el estado a "EN_ATENCION".
 3. Registra diagnostico.
 4. Marca la cita como "COMPLETADA".
+
+## CU-04 Contratar Empleado
+
+**Actor:** Administrador 
+
+**Flujo Principal:**
+1. Ingresa datos del empleado.
+2. Selecciona tipo (medico, cirujano, enfermero).
+3. Asigna salario base.
+4. El sistema registra el empelado.
+
+---
+
+## CU-05: Cancelar cita 
+
+**Actor:** Paciente 
+
+**Flujo Principal:** Recepcionista / Paciente 
+1. El paciente selecciona la cita.
+2. Solicita cancelacion.
+3. El sistema cambia el estado a "CANCELADA".
+
+## CU-06: Consultar Historial Medico
+
+**Actor:** Recepcionista / Paciente 
+1. Se ingresa el paciente.
+2. El sistema muestra historial de citas y diagnostico.
