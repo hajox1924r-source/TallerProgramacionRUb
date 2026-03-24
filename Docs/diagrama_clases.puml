@@ -1,133 +1,119 @@
-@startuml de_clases 
-' =========================
-' CLASES ABSTRACTAS
-' =========================
-
-abstract class Persona {
-    -id: int
-    -nombre: String 
-    -apellido: String
-    -fechaNacimiento: LocalDate
-    -email: String
-    +calcularEdad(): int
-    +obtenerTipo(): String
-}
-
-abstract class Empleado {
-    -legajo: String
-    -fechaContratacion: LocalDate
-    -salarioBase: double
-    -activo: boolean
-    +calcularSalario(): double
-    +antiguedad(): int
-}
+@startuml Diagrama clases 
 
 ' =========================
-' PERSONAS
+' PAQUETES
 ' =========================
+package modelo.abstractas {
+    
+    abstract class Persona {
+        - id : String
+        - nombre : String
+        - apellido : String
+        - fechaNacimiento : LocalDate
+        - email : String
 
-class Paciente {
-    -historiaClinicaID: String
-    -grupoSanguineo: String
-    -alergias: List<String>
-    +agregarAlergia()
-    +obtenerHistorial()
+        + calcularEdad() : int
+        + obtenerTipo() : String
+        + getNombre() : String
+    }
+
+    abstract class Empleado {
+        - legajo : String
+        - fechaContratacion : LocalDate
+        - salarioBase : double
+        - activo : boolean
+
+        + antiguedad() : int
+        + calcularSalario() : double
+        + getSalarioBase() : double
+        + setSalarioBase(double)
+    }
+
+    Persona <|-- Empleado
 }
 
-class Medico {
-    -numeroLicencia: String
-    -especialidad: String
-    +atenderPaciente()
-    +calcularSalario()
+package modelo.personas {
+
+    class Medico {
+        - especialidad : String
+
+        + calcularSalario() : double
+        + obtenerTipo() : String
+    }
+
+    class Cirujano {
+        - cirugiasRealizadas : int
+
+        + calcularSalario() : double
+        + obtenerTipo() : String
+    }
+
+    class Enfermero {
+        - turno : String
+
+        + calcularSalario() : double
+        + obtenerTipo() : String
+    }
+
+    class Paciente {
+        - grupoSanguineo : String
+        - alergias : List<String>
+
+        + agregarAlergia(String)
+        + getAlergias() : List<String>
+        + obtenerTipo() : String
+    }
+
+    Empleado <|-- Medico
+    Medico <|-- Cirujano
+    Empleado <|-- Enfermero
+    Persona <|-- Paciente
 }
 
-class Cirujano {
-    -cirugiasRealizadas: int
-    -disponibilidadEmergencias: boolean
-    +realizarCirugia()
-    +calcularBono()
+package modelo.hospital {
+
+    class CitaMedica {
+        - paciente : Paciente
+        - medico : Medico
+        - fecha : LocalDateTime
+        - estado : EstadoCita
+
+        + completar()
+        + cancelar()
+    }
 }
 
-class Enfermero {
-    -turno: Turno
-    -areaAsignada: String
-    +asistirCirujia()
-    +calcularSalario()
-}
+package principal {
 
-' =========================
-' HOSPITAL
-' =========================
+    class SistemaHospitalDemo {
+        - sc : Scanner
+        - hospital : Hospital
+        - pacientes : List<Paciente>
+        - medicos : List<Medico>
+        - citas : List<CitaMedica>
 
-class Hospital {
-    -nombre: String 
-    -direccion: String
-    -empleados: List<Empleado>
-    -pacientes: List<Paciente>
-    +contratarEmpleado()
-    +agendarCita()
-    +calcularNominaTotal()
-}
-
-class citaMedica {
-    -id: int
-    -fechaHora: LocalDateTime
-    -motivo: String
-    -estado: EstadoCita
-    +calcularCosto()
-    +compeletar()
-    +cancelar()
-}
-
-class Diagnostico {
-    -id: int
-    -descripcion: String
-    -fecha: LocalDate
-    -receta: LocalDate
-}
-
-class especialidad {
-    -codigo: String
-    -nombre: String
-    -costoConsulta: double
-}
-
-' =========================
-' ENUMS
-' =========================
-
-enum EstadoCita {
-    PENDIENTE
-    CONFIRMADA
-    EN_ATENCION
-    COMPLETADA
-    CANCELADA
-}
-
-enum Turno {
-    MAÑANA
-    TARDE
-    NOCHE
+        + main(String[]) 
+        - registrarEmpleado()
+        - registrarPaciente()
+        - mostrarPacientes()
+        - agendarCita()
+        - mostrarCitas()
+        - cambiarEstadoCita()
+        - crearMedico() : Medico
+        - crearCirujano() : Cirujano
+        - crearEnfermero() : Enfermero
+    }
 }
 
 ' =========================
 ' RELACIONES
 ' =========================
 
-Persona <|-- Paciente
-Persona <|-- Paciente
-Empleado <|-- Medico
-Medico <|-- Cirujano
-Empleado <|-- Enfermero
+CitaMedica --> Paciente
+CitaMedica --> Medico
 
-Hospital "1" *-- "*" Empleado
-Hospital "1" *-- "*" Paciente
-Hospital "1" *-- "*" citaMedica
-
-citaMedica --> Paciente 
-citaMedica --> Medico
-citaMedica --> Diagnostico
-
-Medico --> especialidad
+SistemaHospitalDemo --> Paciente
+SistemaHospitalDemo --> Medico
+SistemaHospitalDemo --> CitaMedica
 
 @enduml
