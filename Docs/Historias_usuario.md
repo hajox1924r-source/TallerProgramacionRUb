@@ -1,63 +1,22 @@
-# Historias de Usuario - Sistema de Gestión Hospitalaria
+# 📋 Historias de Usuario - Sistema de Gestión Hospitalaria
 
-## Recepcionista
+## Tabla de Historias de Usuario
 
-**HU-01**
-Como recepcionista, quiero registrar pacientes con sus datos personales, historial clínico y grupo sanguineo, para mantener un registro médico digital organizado.
-
-**HU-02**
-Como recepcionista, quiero registrar alergias de los pacientes, para evitar que se les administren medicamentos que puedan causar reacciones adversas.
-
-**HU-03**
-Como recepcionista, quiero registrar contraindicaciones de los pacientes, para prevenir tratamientos que puedan afectar negativamente su salud.
-
-**HU-04**
-Como recepcionista, quiero consultar el historial médico de un paciente, para gestionar mejor su atencion.
-
-**HU-10**
-Como recepcionista, quiero agendar citas medicas validando la disponibilidad del medico, para evitar conflictos de horario.
-
-**HU-11**
-Como recepcionista, quiero confirmar citas medicas, para asegurar la asistencia del paciente.
-
----
-
-## Médico
-
-**HU-13**
-Como medico, quiero registrar diagnosticos, para mantener actualizado el historial clinico del paciente.
-
-**HU-14**
-Como medico, quiero registrar recetas medicas, para proporcionar el tratamiento adecuado al paciente.
-
-**HU-15**
-Como medico, quiero marcar una cita como "en atención", para indicar que el paciente está siendo atendido.
-
-**HU-16**
-Como medico, quiero marcar una cita como "completada", para registrar la finalización de la atención médica.
-
----
-
-## Administrador
-
-**HU-06**
-Como administrador, quiero contratar empleados (medicos, cirujanos y enfermeros), para garantizar la atención hospitalaria.
-
-**HU-07**
-Como administrador, quiero asignar especialidades medicas a los médicos, para establecer tarifas de consulta adecuadas.
-
-**HU-08**
-Como administrador, quiero gestionar los turnos de trabajo, para asegurar cobertura en todos los horarios.
-
-**HU-09**
-Como administrador, quiero asignar salarios base, para calcular automáticamente el salario final con bonificaciones.
-
----
-
-## Paciente
-
-**HU-05**
-Como paciente, quiero consultar mi historial medico, para revisar mis citas anteriores.
-
-**HU-12**
-Como paciente, quiero cancelar citas medicas, para liberar el horario en caso de no poder asistir.
+| ID     | Rol            | Historia de Usuario                                                                 | Objetivo                                                                 |
+|--------|----------------|--------------------------------------------------------------------------------------|--------------------------------------------------------------------------|
+| HU-01  | Recepcionista  | Registrar pacientes con datos personales, historial clínico y grupo sanguíneo       | Mantener un registro médico digital organizado                          |
+| HU-02  | Recepcionista  | Registrar alergias de los pacientes                                                  | Evitar reacciones adversas por medicamentos                             |
+| HU-03  | Recepcionista  | Registrar contraindicaciones de los pacientes                                       | Prevenir tratamientos perjudiciales                                     |
+| HU-04  | Recepcionista  | Consultar el historial médico de un paciente                                        | Gestionar mejor la atención                                             |
+| HU-10  | Recepcionista  | Agendar citas médicas validando disponibilidad del médico                           | Evitar conflictos de horario                                            |
+| HU-11  | Recepcionista  | Confirmar citas médicas                                                             | Asegurar la asistencia del paciente                                     |
+| HU-13  | Médico         | Registrar diagnósticos                                                              | Mantener actualizado el historial clínico                               |
+| HU-14  | Médico         | Registrar recetas médicas                                                           | Proporcionar tratamiento adecuado                                       |
+| HU-15  | Médico         | Marcar una cita como "en atención"                                                  | Indicar que el paciente está siendo atendido                            |
+| HU-16  | Médico         | Marcar una cita como "completada"                                                   | Registrar la finalización de la atención médica                         |
+| HU-06  | Administrador  | Contratar empleados (médicos, cirujanos y enfermeros)                              | Garantizar la atención hospitalaria                                     |
+| HU-07  | Administrador  | Asignar especialidades médicas a los médicos                                        | Establecer tarifas de consulta adecuadas                                |
+| HU-08  | Administrador  | Gestionar los turnos de trabajo                                                     | Asegurar cobertura en todos los horarios                                |
+| HU-09  | Administrador  | Asignar salarios base                                                              | Calcular automáticamente el salario final con bonificaciones            |
+| HU-05  | Paciente       | Consultar su historial médico                                                       | Revisar citas anteriores                                                |
+| HU-12  | Paciente       | Cancelar citas médicas                                                              | Liberar horarios en caso de no asistir                                  |
